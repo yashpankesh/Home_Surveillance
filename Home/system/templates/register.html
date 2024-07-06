@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Register Page</title>
+    <link rel="stylesheet" href="/static/register.css">
+</head>
+<body>
+    <div class="cone">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <h3>Register Here</h3>
+
+            {{ form.non_field_errors }}
+
+            <label for="username">User Name</label>
+            <input type="text" placeholder="Enter Your Name" id="username" name="username" required value="{{ form.username.value|default_if_none:'' }}">
+            {{ form.username.errors }}
+
+            <label for="email">Email</label>
+            <input type="email" placeholder="Email" id="email" name="email" required value="{{ form.email.value|default_if_none:'' }}">
+            {{ form.email.errors }}
+
+            <label for="phone_number">Mobile Number</label>
+            <input type="text" placeholder="Mobile Number" id="phone_number" name="phone_number" required value="{{ form.phone_number.value|default_if_none:'' }}">
+            {{ form.phone_number.errors }}
+
+            <label for="password1">Password</label>
+            <input type="password" placeholder="Password" id="password1" name="password1">
+            {{ form.password1.errors }}
+
+            <label for="password2">Confirm Password</label>
+            <input type="password" placeholder="Confirm Password" id="password2" name="password2" required>
+            {{ form.password2.errors }}
+
+            <button type="submit">Register</button><br>
+            <br>
+            <a href="{% url 'login' %}" class="external">Already have an account? Login</a>
+        </form>
+    </div>
+</body>
+</html>
